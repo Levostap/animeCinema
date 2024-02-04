@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3 ms-5 ">
+  <div class="row justify-content-center">
+        <!-- Карточка с инфой\фотками и вся такая хуйня -->
+        <div class="container col-8 me-5">
+        {% for card in cards %}
+          <div class="card mt-3">
+            <img class="card-img-top" src="{% static card.image_url %}" alt="Card image cap" width="240" height="135">
+            <div class="card-body">
+              <h5 class="card-title">{{ card.name }}</h5>
+              <p class="card-text">{{ card.desc }}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ card.tags }}</small>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    <!-- Залупонь с фильтрами. Ну или типа того. -->
+    <div class="col-1 ps-5">
+      <div class="card" style="width: 18rem;">
+        <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Здесь можно написать какую-нибудь хуйню или вообще ничего не писать, похуй.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <button type="button" class="btn btn-primary">Кнопка, да?</button>
+          </li>
+          <li class="list-group-item">
+            <!--
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+              </div>
+            </div>  Хуй знает почему, но эта залупа не работает нихуя. Мб это пока что-->
+          </li>
+          <li class="list-group-item">Хуйня</li>
+          <li class="list-group-item">Хуйня</li>
+          <li class="list-group-item">Хуйня</li>
+          <li class="list-group-item">Хуйня</li>
+          <li class="list-group-item">Хуйня</li>
+          <li class="list-group-item">Хуйня</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
