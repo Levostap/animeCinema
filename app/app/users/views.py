@@ -1,22 +1,22 @@
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
+from users.forms import UserLoginForm, UserRegistrationForm
+
 
 # Create your views here.
-def login(request):
-    prev_page_url = request.META.get('HTTP_REFERER')
-    context = {
-        "title": "Авторизация",
-        "prev_page": prev_page_url,
-    }
-    return render(request, "users/login.html", context=context)
+class LoginUser(LoginView):
+    form_class = UserLoginForm
+    template_name = "users/login.html"
+    extra_context = {"title": "Авторизация"}
 
-def registration(request):
-    prev_page_url = request.META.get('HTTP_REFERER')
-    context = {
-        "title": "Регистрация",
-        "prev_page": prev_page_url,
-    }
-    return render(request, "users/register.html", context=context)
+class RegisterUser(CreateView):
+    form_class = UserRegistrationForm
+    template_name = "users/register.html"
+    extra_context = {"title": "Регистрация"}
+    success_url = reverse_lazy("user:login")
+
 
 def profile(request): ...
-
-def logout(request): ...

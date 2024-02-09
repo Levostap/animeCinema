@@ -30,27 +30,79 @@
         </header>
 
 
-
         <div class="container justify-content-center mt-5">
-            <form>
-              <div class="form-group mt-3">
-                  <label for="exampleInputLogin">Имя пользователя</label>
-                  <input type="email" class="form-control" id="Login" aria-describedby="emailHelp" placeholder="Введите имя пользователя">
-                  <small id="emailHelp" class="form-text text-muted"></small>
+            <form action="{% url 'user:registration' %}" method="post">
+            {% csrf_token %}
+                <div class="form-group mt-3">
+                    <label for="id_for_firstname">Имя</label>
+                    <input type="text" class="form-control" id="id_for_firstname"
+                           name="first_name"
+                           value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+                           placeholder="Введите Ваше имя" required>
+                    {% if form.first_name.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
+                    {% endif %}
                 </div>
-            <div class="form-group mt-3">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <div class="form-group mt-3">
-                <label for="exampleInputPassword1">Пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
-              </div>
-              <div class="form-group mt-3">
-                <label for="exampleInputPassword1">Повторите пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль повторно">
-              </div>
+                <div class="form-group mt-3">
+                    <label for="id_for_lastname">Фамилия</label>
+                    <input type="text" class="form-control" id="id_for_lastname"
+                           name="last_name"
+                           value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}"
+                           placeholder="Введите Вашу фамилию" required>
+                    {% if form.last_name.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group mt-3">
+                    <label for="id_for_age">Возраст</label>
+                    <input type="text" class="form-control" id="id_for_age"
+                           name="age"
+                           value="{% if form.age.value %}{{form.age.value}}{% endif %}"
+                           placeholder="Введите Ваш возраст" required>
+                    {% if form.age.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.age.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group mt-3">
+                    <label for="id_for_email">Email</label>
+                    <input type="email" class="form-control" id="id_for_email" aria-describedby="emailHelp"
+                           name="email"
+                           value="{% if form.email.value %}{{form.email.value}}{% endif %}"
+                           placeholder="Введите Email" required>
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group mt-3">
+                  <label for="id_for_username">Имя пользователя</label>
+                  <input type="text" class="form-control" id="id_for_username"
+                         name="username"
+                         value="{% if form.username.value %}{{form.username.value}}{% endif %}"
+                         placeholder="Введите имя пользователя" required>
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
+                    {% endif %}
+                </div>
+                 <div class="form-group mt-3">
+                    <label for="id_for_password1">Пароль</label>
+                    <input type="password" class="form-control" id="id_for_password1"
+                           name="password1"
+                           value="{% if form.password1.value %}{{form.password1.value}}{% endif %}"
+                           placeholder="Введите пароль" required>
+                     {% if form.password1.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.password1.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group mt-3">
+                    <label for="id_for_password2">Повторите пароль</label>
+                    <input type="password" class="form-control" id="id_for_password2"
+                           name="password2"
+                           value="{% if form.password2.value %}{{form.password2.value}}{% endif %}"
+                           placeholder="Введите пароль повторно" required>
+                    {% if form.password2.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{form.password2.errors}}</div>
+                    {% endif %}
+                </div>
               <button type="submit" class="btn btn-primary mt-3">Зарегистрироваться</button>
             </form>
         </div>
